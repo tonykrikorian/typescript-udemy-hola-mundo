@@ -66,3 +66,55 @@ function setSize(size: Size): string {
 }
 
 setSize("xl");
+
+/**
+ * Nullable Types: Se usa el union type con null o undefined
+ * Esto se usa para el caso en el que la función pueda tener parametros null
+ * Siempre se debe validar este caso e el codigo
+ */
+
+function toNumber(n: string | null) {
+  if (!n) return 0;
+  return parseInt(n);
+}
+
+const n = toNumber(null);
+
+/**
+ * Optional Chaining operator : Operador "?"
+ * cuando devuelve un objeto que puede ser null o undefined
+ * Para evitar el NullReferenceException
+ */
+
+function getUser(id: number) {
+  if (id < 0) return null;
+
+  return {
+    id: 1,
+    createdAt: new Date(),
+  };
+}
+const user = getUser(-1);
+console.log("usuario: ", user?.createdAt);
+
+//Se puede hacer con arrays, sí el arraeglo es null or undefined, no se ejecuta y no se cae
+const arr1 = null;
+arr1?.[0];
+
+//Se puede hacer con funciones, si la función es null oir undefined, no se ejecuta
+const fn5: any = null;
+fn5?.();
+
+/**
+ * Nullish coalescing operator: Sirve para asignar un valor por defecto cuando una
+ * variable venga con valor null or undefined
+ */
+
+const difficulty: number | null | undefined = null;
+
+const player = {
+  username: "Chanchito feliz",
+  difficulty: difficulty ?? 2,
+};
+
+console.log(player);
