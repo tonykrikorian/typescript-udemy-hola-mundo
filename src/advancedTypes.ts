@@ -118,3 +118,45 @@ const player = {
 };
 
 console.log(player);
+
+/**
+ * Type Assertion: Es cuando forzamos la conversión de una variable a un tipo
+ * de datos especifico
+ */
+
+const element: any = null;
+
+const element2 = element as number; //Debemos estar bien bien seguros de que esto es un numero!
+
+/**
+ * Type Narrowing: Es cuando podemos crear caminos en función del
+ * tipo de dato de los argumentos
+ */
+
+function lala(x: string | number) {
+  //type narrowing
+  if (typeof x === "string") {
+    x.length;
+  }
+
+  if (typeof x === "number") {
+    x.toFixed(2);
+  }
+}
+
+/**
+ * Type unknow: Es el reemplazo del tipo any, cuando se usa unknow, hay que validar los tipos de datos
+ */
+
+function procesa(algo: any) {
+  algo.haceCosas(); // No sabemos sí estos metodos pertenecen a "algo"
+  algo.haceOtrasCosas();
+}
+function procesa2(algo: any) {
+  if (typeof algo === "number") return algo.toFixed(2);
+  if (typeof algo === "string") return algo.toUpperCase();
+  if (algo instanceof String) return algo.charAt(2); // Acá se debe hacer instanceof con una clase creada por nosotros
+
+  algo.haceCosas(); // No sabemos sí estos metodos pertenecen a "algo"
+  algo.haceOtrasCosas();
+}
