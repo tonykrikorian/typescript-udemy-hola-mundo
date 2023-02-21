@@ -157,6 +157,5 @@ function procesa2(algo: any) {
   if (typeof algo === "string") return algo.toUpperCase();
   if (algo instanceof String) return algo.charAt(2); // Acá se debe hacer instanceof con una clase creada por nosotros
 
-  algo.haceCosas(); // No sabemos sí estos metodos pertenecen a "algo"
-  algo.haceOtrasCosas();
+  return {};
 }
