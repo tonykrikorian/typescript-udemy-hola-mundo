@@ -82,12 +82,11 @@ class SpentReporter {
   }
   calculateTotalSpents() {
     this._total = this.categories.reduce((acc, current) => {
-      current.isAmmountExceed();
       return current.totalSpents + acc;
     }, 0);
   }
 
-  printCategoryReport() {
+  printReport() {
     this.categories.forEach((category) => {
       console.log(`Spents: ${JSON.stringify(category.spents, null, 2)}`);
       console.log(`Total spents: ${category.totalSpents}`);
@@ -101,4 +100,4 @@ SpentReporter.sueldo = 10000;
 const globalReport = new SpentReporter([supermarketCategory, funCategory]);
 console.log(`Total global spents: ${globalReport.globalTotalSpent}`);
 console.log(globalReport.isAmmountExceeded());
-globalReport.printCategoryReport();
+globalReport.printReport();
