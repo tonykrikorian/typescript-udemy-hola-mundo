@@ -47,4 +47,27 @@ const player = {
     difficulty: difficulty !== null && difficulty !== void 0 ? difficulty : 2,
 };
 console.log(player);
+const element = null;
+const element2 = element;
+function lala(x) {
+    if (typeof x === "string") {
+        x.length;
+    }
+    if (typeof x === "number") {
+        x.toFixed(2);
+    }
+}
+function procesa(algo) {
+    algo.haceCosas();
+    algo.haceOtrasCosas();
+}
+function procesa2(algo) {
+    if (typeof algo === "number")
+        return algo.toFixed(2);
+    if (typeof algo === "string")
+        return algo.toUpperCase();
+    if (algo instanceof String)
+        return algo.charAt(2);
+    return {};
+}
 //# sourceMappingURL=advancedTypes.js.map
