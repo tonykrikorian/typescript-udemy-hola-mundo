@@ -23,6 +23,9 @@ class Producto extends DatosBasicos {
     get fullDescription() {
         return `producto: ${super.fullDescription}`;
     }
+    guardarDatos() {
+        console.log("Guardando producto");
+    }
 }
 class Categoria extends DatosBasicos {
     constructor(name, description, createdAt, createdBy) {
@@ -34,6 +37,9 @@ class Categoria extends DatosBasicos {
     }
     get fullDescription() {
         return `categoria: ${this.name}`;
+    }
+    guardarDatos() {
+        console.log("Guardar categoria");
     }
 }
 const producto1 = new Producto(100, 1, 1000, "iphone", "SmartPhone", new Date(), 1);
