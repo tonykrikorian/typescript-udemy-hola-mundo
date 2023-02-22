@@ -20,7 +20,7 @@
  * Debemos crear una clase que agrupe las propiedades comunes
  */
 
-class DatosBasicos {
+abstract class DatosBasicos {
   constructor(
     public name: string,
     public description: string,
@@ -35,6 +35,8 @@ class DatosBasicos {
   get fullDescription(): string {
     return `${this.name}: ${this.description}`;
   }
+
+  abstract guardarDatos(): void;
 }
 
 class Producto extends DatosBasicos {
@@ -52,6 +54,10 @@ class Producto extends DatosBasicos {
 
   override get fullDescription() {
     return `producto: ${super.fullDescription}`;
+  }
+
+  override guardarDatos(): void {
+    console.log("Guardando producto");
   }
 }
 
@@ -72,6 +78,10 @@ class Categoria extends DatosBasicos {
 
   override get fullDescription() {
     return `categoria: ${this.name}`;
+  }
+
+  override guardarDatos(): void {
+    console.log("Guardar categoria");
   }
 }
 
