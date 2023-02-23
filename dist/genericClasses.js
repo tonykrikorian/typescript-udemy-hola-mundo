@@ -41,8 +41,21 @@ class Estado {
         return this.data;
     }
 }
+class EstadoEliminar extends Estado {
+    eliminar(id) {
+        this.data.filter((x) => x.id !== id);
+    }
+}
+class EstadoUsuario extends Estado {
+    reiniciarPassword() {
+    }
+}
 const estado = new Estado();
 const estadoStatus = new Estado();
+const estadoEliminar = new EstadoEliminar();
+const estadoUsuario = new EstadoUsuario();
+estadoUsuario.reiniciarPassword();
+estadoEliminar.eliminar(12);
 estado.agregarEstado({
     id: 1,
     name: "Tony",
@@ -54,4 +67,12 @@ estado.agregarEstado({
 estadoStatus.agregarEstado(true);
 console.log(estado.getEstado());
 console.log(estadoStatus.getEstado());
+const calendar = {
+    id: 1,
+    owner: "yo",
+    source: "microsoft",
+};
+function getProp(objeto, property) {
+    return objeto[property];
+}
 //# sourceMappingURL=genericClasses.js.map

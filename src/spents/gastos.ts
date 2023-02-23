@@ -1,6 +1,4 @@
-import { Category } from "./Category";
-import { Spent } from "./Spent";
-import { SpentReporter } from "./SpentReporter";
+import { Category, Spent, SpentReporter } from "./classes";
 
 const spent1 = new Spent(
   "tony",
