@@ -120,3 +120,9 @@ const profe = new Profesor("Hola", "mundo", "1234567");
 console.log(profe);
 console.log(profe.fullName);
 console.log(profe.password);
+
+/**
+ * Compocisión de decoradores: Los decoradores de se ejecutan de abajo hacia arriba
+ * primero se ejecuta el que esta justo encima de la clase, y despues, los de mas
+ * arriba
+ */
