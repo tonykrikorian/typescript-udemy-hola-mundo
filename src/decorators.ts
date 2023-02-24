@@ -33,8 +33,9 @@ function Method(
     console.log("Despues del decorador");
   };
 }
-function Method2(method: string) {
+function Method2(message: string) {
   return (target: any, methodName: string, descriptor: PropertyDescriptor) => {
+    console.log(message); //Argumento del decorador
     console.log(target, methodName, descriptor);
     const original = descriptor.value; // Guardamos una referencia al metodo de la clase
     descriptor.value = function (...args: any) {
