@@ -60,6 +60,63 @@ class Productos {
   }
 }
 
-const p2 = new Productos();
+// const p2 = new Productos();
 
-p2.find("  hola mundo");
+// p2.find("  hola mundo");
+
+//Decoradores getter y setter
+function UpperCase(
+  _target: any,
+  _methodName: string,
+  descriptor: PropertyDescriptor
+) {
+  const original = descriptor.get;
+
+  descriptor.get = function () {
+    const r = original?.call(this);
+    if (typeof r === "string") return r.toUpperCase();
+
+    return r;
+  };
+}
+
+//Decoradores de propiedades
+function Min(minLength: number) {
+  return (target: any, propertyName: string) => {
+    let val: string;
+    const descriptor: PropertyDescriptor = {
+      get(): string {
+        return val;
+      },
+
+      set(v: string) {
+        if (v.length < minLength)
+          throw new Error(
+            `La propiedad ${propertyName} debe ser de minimo ${minLength} caracteres`
+          );
+
+        val = v;
+      },
+    };
+    Object.defineProperty(target, propertyName, descriptor);
+  };
+}
+
+class Profesor {
+  @Min(6)
+  public password: string;
+  constructor(public name: string, public lastname: string, password: string) {
+    this.password = password;
+  }
+
+  @UpperCase
+  get fullName(): string {
+    return `${this.name} ${this.lastname}`;
+  }
+}
+
+const profe = new Profesor("Hola", "mundo", "1234567");
+
+console.log(profe);
+console.log(profe.fullName);
+console.log(profe.password);
