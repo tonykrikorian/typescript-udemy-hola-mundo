@@ -56,6 +56,20 @@ const product: Audit & Product = {
  */
 
 type Fibo = 0 | 1 | 2 | 3 | 5;
+type PolicyRenewalStatus = "V" | "N" | "C" | "E";
+
+function renewalFactory(policyRenewalStatus: PolicyRenewalStatus): void {
+  switch (policyRenewalStatus) {
+    case "V":
+    case "C":
+    case "E":
+    case "N":
+      break;
+    default:
+      break;
+  }
+}
+renewalFactory("V");
 
 const deFibo: Fibo = 1;
 
@@ -70,7 +84,7 @@ setSize("xl");
 /**
  * Nullable Types: Se usa el union type con null o undefined
  * Esto se usa para el caso en el que la función pueda tener parametros null
- * Siempre se debe validar este caso e el codigo
+ * Siempre se debe validar este caso en el codigo
  */
 
 function toNumber(n: string | null) {
@@ -80,6 +94,22 @@ function toNumber(n: string | null) {
 
 const n = toNumber(null);
 
+type Type1 = {
+  id: number;
+  name: string;
+};
+
+function processType(typeToProcess: Type1 | null): void | never {
+  if (!typeToProcess) throw new Error("El tipo especificado es null");
+
+  console.log(typeToProcess);
+}
+
+processType(null);
+processType({
+  id: 1,
+  name: "Tony",
+});
 /**
  * Optional Chaining operator : Operador "?"
  * cuando devuelve un objeto que puede ser null o undefined
@@ -101,7 +131,7 @@ console.log("usuario: ", user?.createdAt);
 const arr1 = null;
 arr1?.[0];
 
-//Se puede hacer con funciones, si la función es null oir undefined, no se ejecuta
+//Se puede hacer con funciones, si la función es null osr undefined, no se ejecuta
 const fn5: any = null;
 fn5?.();
 

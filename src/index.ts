@@ -80,3 +80,11 @@ function ageValidtion(age: number): string {
 function validateUser(age: number): void | never {
   if (age <= 17) throw new Error("Eres menor de edad");
 }
+
+//Ejemplo de función con never
+
+function validateUserAge(age: number): string | never {
+  if (age >= 18) return "Puedes pasar";
+
+  throw new Error("No puedes pasar");
+}
